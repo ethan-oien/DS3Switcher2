@@ -1,6 +1,6 @@
 # DS3Switcher
 
-DS3 Switcher An application by echo778 on Nexus Mods
+DS3Switcher, an application by echo778 on Nexus Mods
 
 ## Description
 

@@ -12,7 +12,7 @@ This application mods and unmods Dark Souls 3 based on the Steam profile you are
 
 Simply make a shortcut to the .exe, and launch that instead of your normal DARK SOULS III shortcut. If everything is set up correctly, a console window will flash on screen briefly, before starting Dark Souls 3.
 
-Config will launch on first use of the DS3Switcher.exe. To edit configuration after first launch, DO NOT edit "switcher.config", instead launch config.bat. Alternatively, launch DS3Switcher.exe with the argument "config".
+Config will launch on first use of the DS3Switcher.exe. To edit configuration after first launch, DO NOT edit "switcher.config", instead launch config.bat. Alternatively, launch DS3Switcher.exe with the argument ``config``.
 
 The program has 5 configuration options: DS3 Path, DS3 Executable, Arguments, Mod Toggle, and Save Configuration.
 * DS3 Path is the path to your Dark Souls 3 Game folder.

@@ -3,8 +3,9 @@
 #include <string>
 #include <windows.h>
 #include <list>
-#include <cstdio>
+#include <stdio.h>
 #include <direct.h>
+#include <conio.h>
 
 /***********************************
 ====================================
@@ -48,6 +49,7 @@ std::wstring arguments = L" ";
 int main(int argc, char* argv[]);
 void StartDS3();
 void ReadGlobals();
+void Pause();
 
 //IDLIST VARIABLES
 std::list<std::wstring> ids;
@@ -101,7 +103,7 @@ int main(int argc, char* argv[])
     if (steamID64 == std::to_wstring(76561197960265728))
     {
         std::cout << "Not signed into Steam! Please sign in.\n";
-        system("pause");
+        Pause();
         exit(1);
     }
         
@@ -110,7 +112,7 @@ int main(int argc, char* argv[])
     if (argc > 2)
     {
         std::cout << "Only 1 argument accepted. Use \"config\" to enter config mode.\n";
-        system("pause");
+        Pause();
         exit(1);
     }
     else if (argc == 2)
@@ -131,10 +133,10 @@ int main(int argc, char* argv[])
             {
                 std::cout << "Please make sure the correct mods for the current ID are installed." << std::endl;
                 std::cout << "Additionally, make sure modengine.ini is set up as desired." << std::endl;
-                system("pause");
+                Pause();
                 exit(0);
             }
-            system("pause");
+            Pause();
         }
 
         if (LoadCurConfig() == 0)
@@ -145,7 +147,7 @@ int main(int argc, char* argv[])
         else
         {
             std::cout << "Unable to insert DLL into Dark Souls 3 folder, game not started.\n";
-            system("pause");
+            Pause();
             exit(1);
         }
     }
@@ -159,7 +161,7 @@ int main(int argc, char* argv[])
         else
         {
             std::cout << "Unable to remove DLL from Dark Souls 3 folder, game not started.\n";
-            system("pause");
+            Pause();
             exit(1);
         }
 
@@ -212,7 +214,7 @@ void StartDS3()
     if (e == 0)
     {
         std::cout << GetLastError() << std::endl;
-        system("pause");
+        Pause();
         exit(1);
     }
 }
@@ -277,7 +279,7 @@ void ReadGlobals()
     if (!gfile)
     {
         std::cout << "Can't access config file!\n";
-        system("pause");
+        Pause();
         exit(1);
     }
 
@@ -316,13 +318,20 @@ void ReadGlobals()
             else
             {
                 std::cout << "switcher.config is in wrong format! Was it edited externally?\n";
-                system("pause");
+                Pause();
                 exit(1);
             }
         }
     }
 
     fclose(gfile);
+}
+
+void Pause()
+{
+    std::cout << "Press any key to continue . . . ";
+    _getch();
+    std::cout << std::endl;
 }
 
 //====================
@@ -417,7 +426,7 @@ void ParseID()
     if (!fp)
     {
         std::cout << "Can't access config file!\n";
-        system("pause");
+        Pause();
         exit(1);
     }
 
@@ -469,7 +478,7 @@ bool IDIsModded(std::wstring id)
     if (!IDInList(id))
     {
         std::cout << "ID does not exist in list.\n";
-        system("pause");
+        Pause();
         exit(1);
     }
 
@@ -609,7 +618,7 @@ int SaveCurConfig()
     catch (const std::exception&)
     {
         std::cout << "Unable to save config! Are there any mods installed?\n";
-        system("pause");
+        Pause();
         exit(1);
     }
 
@@ -632,7 +641,7 @@ int LoadCurConfig()
         catch (const std::exception&)
         {
             std::cout << "dinput8.dll not found! Are there any mods installed?\n";
-            system("pause");
+            Pause();
             exit(1);
         }
 
@@ -645,7 +654,7 @@ int LoadCurConfig()
         catch (const std::exception&)
         {
             std::cout << "modengine.ini not found! Are there any mods installed?\n";
-            system("pause");
+            Pause();
             exit(1);
         }
 
@@ -752,7 +761,7 @@ long FetchSteamID3()
     catch (const std::exception&)
     {
         std::cout << "Registry export failed!\n";
-        system("pause");
+        Pause();
         exit(1);
     }
 

@@ -1,4 +1,4 @@
-# DS3Switcher
+# DS3Switcher (CPP, 2nd iteration)
 
 DS3Switcher, an application by echo778 on Nexus Mods
 
